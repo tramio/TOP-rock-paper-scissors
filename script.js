@@ -20,7 +20,7 @@ function playRound(playerSelection) {
     function computerPlay() {
         computerSelection = gameOptions[Math.floor(Math.random()*gameOptions.length)];
     }
-    
+
     computerPlay();
 
     let winMessage = "You won! " + playerSelection + " beats " + computerSelection + "!";
@@ -38,12 +38,18 @@ function playRound(playerSelection) {
         case "paper":
             outcome.textContent = loseMessage;
             computerScore += 1;
-            if (computerScore == 5) {disableButtons()};
+            if (computerScore == 5) {
+                disableButtons();
+                showWinner();
+            }
             break;
         case "scissors":
             outcome.textContent = winMessage;
             playerScore += 1;
-            if (playerScore == 5) {disableButtons()};
+            if (playerScore == 5) {
+                disableButtons();
+                showWinner();
+            }
             break;
         default:
             outcome.textContent = defaultMessage;
@@ -54,7 +60,10 @@ function playRound(playerSelection) {
         case "rock":
             outcome.textContent = winMessage;
             playerScore += 1;
-            if (playerScore == 5) {disableButtons()};
+            if (playerScore == 5) {
+                disableButtons();
+                showWinner();
+            }
             break;
         case "paper":
             outcome.textContent = equaMessage;
@@ -62,7 +71,10 @@ function playRound(playerSelection) {
         case "scissors":
             outcome.textContent = loseMessage;
             computerScore += 1;
-            if (computerScore == 5) {disableButtons()};
+            if (computerScore == 5) {
+                disableButtons();
+                showWinner();
+            }
             break;
         default:
             outcome.textContent = defaultMessage;
@@ -73,12 +85,18 @@ function playRound(playerSelection) {
         case "rock":
             outcome.textContent = loseMessage;
             computerScore += 1;
-            if (computerScore == 5) {disableButtons()};
+            if (computerScore == 5) {
+                disableButtons();
+                showWinner();
+            }
             break;
         case "paper":
             outcome.textContent = winMessage;
             playerScore += 1;
-            if (playerScore == 5) {disableButtons()};
+            if (playerScore == 5) {
+                disableButtons();
+                showWinner();
+            }
             break;
         case "scissors":
             outcome.textContent = equaMessage;

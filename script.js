@@ -23,8 +23,8 @@ function playRound(playerSelection) {
 
     computerPlay();
 
-    let winMessage = "You won! " + playerSelection + " beats " + computerSelection + "!";
-    let loseMessage = "You lost! " + computerSelection + " beats " + playerSelection + "!";
+    let winMessage = "You won; " + playerSelection + " beats " + computerSelection + "!";
+    let loseMessage = "You lost; " + computerSelection + " beats " + playerSelection + "!";
     let equaMessage = "It's a tie! Keep going!";
     let defaultMessage = "Your opponent broke! Someone must fix this game!";
 

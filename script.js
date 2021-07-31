@@ -15,7 +15,9 @@ function playRound(playerSelection) {
     let equaMessage = "It's a tie! Keep going!";
     let defaultMessage = "Your opponent broke! Someone must fix this game!";
 
-    console.log("You went for " + playerSelection + ". Wise choice.","\n","Your opponent chose " + computerSelection + "! What a surprise!!!");
+    let initialNarration = document.createElement("p");
+    initialNarration.textContent = "You went for " + playerSelection + ". Wise choice. Your opponent chose " + computerSelection + "! What a surprise!!!";
+    divResults.appendChild(initialNarration);
 
     if (playerSelection == "rock") {
         switch (computerSelection) {
@@ -94,3 +96,5 @@ const buttons = document.querySelectorAll(".gameOptions");
 buttons.forEach((button) => {
     button.addEventListener("click", () => playRound(button.value));
 });
+
+const divResults = document.querySelector("#results");

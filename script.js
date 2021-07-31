@@ -1,8 +1,21 @@
 const gameOptions = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
+let round = 0;
+
+const divResults = document.querySelector("#results");
+
+let choices = document.createElement("p");
+divResults.appendChild(choices);
+
+let outcome = document.createElement("p");
+divResults.appendChild(outcome);
+
+let intermediaryScore = document.createElement("p");
+divResults.appendChild(intermediaryScore);
 
 function playRound(playerSelection) {
+    round++;
     let computerSelection;
     function computerPlay() {
         computerSelection = gameOptions[Math.floor(Math.random()*gameOptions.length)];
@@ -15,64 +28,60 @@ function playRound(playerSelection) {
     let equaMessage = "It's a tie! Keep going!";
     let defaultMessage = "Your opponent broke! Someone must fix this game!";
 
-    let initialNarration = document.createElement("p");
-    initialNarration.textContent = "You went for " + playerSelection + ". Wise choice. Your opponent chose " + computerSelection + "! What a surprise!!!";
-    divResults.appendChild(initialNarration);
-
-    let intermediaryNarration = document.createElement("p");
+    choices.textContent = "You went for " + playerSelection + ". Wise choice. Your opponent chose " + computerSelection + "! What a surprise!!!";
 
     if (playerSelection == "rock") {
         switch (computerSelection) {
         case "rock":
-            intermediaryNarration.textContent = equaMessage;
+            outcome.textContent = equaMessage;
             break;
         case "paper":
-            intermediaryNarration.textContent = loseMessage;
+            outcome.textContent = loseMessage;
             computerScore += 1;
             break;
         case "scissors":
-            intermediaryNarration.textContent = winMessage;
+            outcome.textContent = winMessage;
             playerScore += 1;
             break;
         default:
-            intermediaryNarration.textContent = defaultMessage;
+            outcome.textContent = defaultMessage;
             break;
     }}
     else if (playerSelection == "paper") {
         switch (computerSelection) {
         case "rock":
-            intermediaryNarration.textContent = winMessage;
+            outcome.textContent = winMessage;
             playerScore += 1;
             break;
         case "paper":
-            intermediaryNarration.textContent = equaMessage;
+            outcome.textContent = equaMessage;
             break;
         case "scissors":
-            intermediaryNarration.textContent = loseMessage;
+            outcome.textContent = loseMessage;
             computerScore += 1;
             break;
         default:
-            intermediaryNarration.textContent = defaultMessage;
+            outcome.textContent = defaultMessage;
             break;
     }}
     else if (playerSelection == "scissors") {
         switch (computerSelection) {
         case "rock":
-            intermediaryNarration.textContent = loseMessage;
+            outcome.textContent = loseMessage;
             computerScore += 1;
             break;
         case "paper":
-            intermediaryNarration.textContent = winMessage;
+            outcome.textContent = winMessage;
             playerScore += 1;
             break;
         case "scissors":
-            intermediaryNarration.textContent = equaMessage;
+            outcome.textContent = equaMessage;
             break;
         default:
-            intermediaryNarration.textContent = defaultMessage;
+            outcome.textContent = defaultMessage;
             break;
     }}
-    divResults.appendChild(intermediaryNarration);
+    intermediaryScore.textContent = "This was round " + round + ". You: " + playerScore + ". Your opponent: " + computerScore + ".";
 }
 
 // for (let round = 1; round < 6; round++) {
@@ -99,5 +108,3 @@ const buttons = document.querySelectorAll(".gameOptions");
 buttons.forEach((button) => {
     button.addEventListener("click", () => playRound(button.value));
 });
-
-const divResults = document.querySelector("#results");

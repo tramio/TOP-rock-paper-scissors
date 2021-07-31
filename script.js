@@ -19,57 +19,60 @@ function playRound(playerSelection) {
     initialNarration.textContent = "You went for " + playerSelection + ". Wise choice. Your opponent chose " + computerSelection + "! What a surprise!!!";
     divResults.appendChild(initialNarration);
 
+    let intermediaryNarration = document.createElement("p");
+
     if (playerSelection == "rock") {
         switch (computerSelection) {
         case "rock":
-            console.log(equaMessage);
+            intermediaryNarration.textContent = equaMessage;
             break;
         case "paper":
-            console.log(loseMessage);
+            intermediaryNarration.textContent = loseMessage;
             computerScore += 1;
             break;
         case "scissors":
-            console.log(winMessage);
+            intermediaryNarration.textContent = winMessage;
             playerScore += 1;
             break;
         default:
-            console.log(defaultMessage);
+            intermediaryNarration.textContent = defaultMessage;
             break;
     }}
     else if (playerSelection == "paper") {
         switch (computerSelection) {
         case "rock":
-            console.log(winMessage);
+            intermediaryNarration.textContent = winMessage;
             playerScore += 1;
             break;
         case "paper":
-            console.log(equaMessage);
+            intermediaryNarration.textContent = equaMessage;
             break;
         case "scissors":
-            console.log(loseMessage);
+            intermediaryNarration.textContent = loseMessage;
             computerScore += 1;
             break;
         default:
-            console.log(defaultMessage);
+            intermediaryNarration.textContent = defaultMessage;
             break;
     }}
     else if (playerSelection == "scissors") {
         switch (computerSelection) {
         case "rock":
-            console.log(loseMessage);
+            intermediaryNarration.textContent = loseMessage;
             computerScore += 1;
             break;
         case "paper":
-            console.log(winMessage);
+            intermediaryNarration.textContent = winMessage;
             playerScore += 1;
             break;
         case "scissors":
-            console.log(equaMessage);
+            intermediaryNarration.textContent = equaMessage;
             break;
         default:
-            console.log(defaultMessage);
+            intermediaryNarration.textContent = defaultMessage;
             break;
     }}
+    divResults.appendChild(intermediaryNarration);
 }
 
 // for (let round = 1; round < 6; round++) {

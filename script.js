@@ -2,11 +2,7 @@ const gameOptions = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
-function playRound() {
-
-    let playerSelection = prompt("Tell me your choice, adventurer!", "");
-    playerSelection = playerSelection.toLowerCase();
-
+function playRound(playerSelection) {
     let computerSelection;
     function computerPlay() {
         computerSelection = gameOptions[Math.floor(Math.random()*gameOptions.length)];
@@ -74,11 +70,11 @@ function playRound() {
     }}
 }
 
-for (let round = 1; round < 6; round++) {
-    playRound();
-    let finalNarration = "This was round " + round + ". You: " + playerScore + ". Your opponent: " + computerScore + ".";
-    console.log(finalNarration);
-}
+// for (let round = 1; round < 6; round++) {
+//     playRound();
+//     let finalNarration = "This was round " + round + ". You: " + playerScore + ". Your opponent: " + computerScore + ".";
+//     console.log(finalNarration);
+// }
 
 function showWinner() {
     if (playerScore == computerScore) {
@@ -92,4 +88,9 @@ function showWinner() {
     }
 }
 
-showWinner();
+// showWinner();
+
+const buttons = document.querySelectorAll(".gameOptions");
+buttons.forEach((button) => {
+    button.addEventListener("click", () => playRound(button.value));
+});

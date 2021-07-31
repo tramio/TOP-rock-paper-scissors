@@ -20,7 +20,7 @@ function playRound(playerSelection) {
     function computerPlay() {
         computerSelection = gameOptions[Math.floor(Math.random()*gameOptions.length)];
     }
-
+    
     computerPlay();
 
     let winMessage = "You won! " + playerSelection + " beats " + computerSelection + "!";
@@ -38,10 +38,12 @@ function playRound(playerSelection) {
         case "paper":
             outcome.textContent = loseMessage;
             computerScore += 1;
+            if (computerScore == 5) {disableButtons()};
             break;
         case "scissors":
             outcome.textContent = winMessage;
             playerScore += 1;
+            if (playerScore == 5) {disableButtons()};
             break;
         default:
             outcome.textContent = defaultMessage;
@@ -52,6 +54,7 @@ function playRound(playerSelection) {
         case "rock":
             outcome.textContent = winMessage;
             playerScore += 1;
+            if (playerScore == 5) {disableButtons()};
             break;
         case "paper":
             outcome.textContent = equaMessage;
@@ -59,6 +62,7 @@ function playRound(playerSelection) {
         case "scissors":
             outcome.textContent = loseMessage;
             computerScore += 1;
+            if (computerScore == 5) {disableButtons()};
             break;
         default:
             outcome.textContent = defaultMessage;
@@ -69,10 +73,12 @@ function playRound(playerSelection) {
         case "rock":
             outcome.textContent = loseMessage;
             computerScore += 1;
+            if (computerScore == 5) {disableButtons()};
             break;
         case "paper":
             outcome.textContent = winMessage;
             playerScore += 1;
+            if (playerScore == 5) {disableButtons()};
             break;
         case "scissors":
             outcome.textContent = equaMessage;
@@ -84,27 +90,28 @@ function playRound(playerSelection) {
     intermediaryScore.textContent = "This was round " + round + ". You: " + playerScore + ". Your opponent: " + computerScore + ".";
 }
 
-// for (let round = 1; round < 6; round++) {
-//     playRound();
-//     let finalNarration = "This was round " + round + ". You: " + playerScore + ". Your opponent: " + computerScore + ".";
-//     console.log(finalNarration);
-// }
+let finalScore = document.createElement("p");
+divResults.appendChild(finalScore);
 
 function showWinner() {
     if (playerScore == computerScore) {
-        console.log("Well, it's a draw.");
+        finalScore.textContent = "Well, it's a draw.";
     }
     else if (playerScore > computerScore) {
-        console.log("You won this game!");
+        finalScore.textContent = "You won this game!";
     }
     else {
-        console.log("You lost this game!");
+        finalScore.textContent = "You lost this game!";
     }
 }
-
-// showWinner();
 
 const buttons = document.querySelectorAll(".gameOptions");
 buttons.forEach((button) => {
     button.addEventListener("click", () => playRound(button.value));
 });
+
+function disableButtons() {
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+}

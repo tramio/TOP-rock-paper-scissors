@@ -23,13 +23,25 @@ startBtn.addEventListener("click", () => {
 });
 
 function createButtons() {
+    const buttonsDiv = document.createElement("div");
+    narrationDiv.appendChild(buttonsDiv);
     for (i = 0; i < 3; i++) {
         const newBtn = document.createElement("button");
         newBtn.classList.add("gameOptions", "buttons");
-        newBtn.value = gameOptions[i];
         newBtn.textContent = gameOptions[i];
-        narrationDiv.appendChild(newBtn);
+        newBtn.value = gameOptions[i];
+        newBtn.addEventListener("click", () => playRound(newBtn.value));
+        buttonsDiv.appendChild(newBtn);
     }
+}
+
+function disableButtons() {
+    playerScore > computerScore ? narrationDiv.textContent = "yo u won": narrationDiv.textContent = "lol u lost";
+    const replayBtn = document.createElement("button");
+    replayBtn.classList.add("buttons");
+    replayBtn.textContent = "Play again!";
+    replayBtn.addEventListener("click", () => createButtons());
+    narrationDiv.appendChild(replayBtn);
 }
 
 function playRound(playerSelection) {
@@ -50,80 +62,64 @@ function playRound(playerSelection) {
 
     if (playerSelection == "rock") {
         switch (computerSelection) {
-        case "rock":
-            outcome.textContent = equaMessage;
-            break;
-        case "paper":
-            outcome.textContent = loseMessage;
-            computerScore += 1;
-            if (computerScore == 5) {
-                disableButtons();
-                showWinner();
-            }
-            break;
-        case "scissors":
-            outcome.textContent = winMessage;
-            playerScore += 1;
-            if (playerScore == 5) {
-                disableButtons();
-                showWinner();
-            }
-            break;
-        default:
-            outcome.textContent = defaultMessage;
-            break;
-    }}
+            case "rock":
+                outcome.textContent = equaMessage;
+                break;
+            case "paper":
+                outcome.textContent = loseMessage;
+                computerScore += 1;
+                break;
+            case "scissors":
+                outcome.textContent = winMessage;
+                playerScore += 1;
+                break;
+            default:
+                outcome.textContent = defaultMessage;
+                break;
+        }
+    }
     else if (playerSelection == "paper") {
         switch (computerSelection) {
-        case "rock":
-            outcome.textContent = winMessage;
-            playerScore += 1;
-            if (playerScore == 5) {
-                disableButtons();
-                showWinner();
-            }
-            break;
-        case "paper":
-            outcome.textContent = equaMessage;
-            break;
-        case "scissors":
-            outcome.textContent = loseMessage;
-            computerScore += 1;
-            if (computerScore == 5) {
-                disableButtons();
-                showWinner();
-            }
-            break;
-        default:
-            outcome.textContent = defaultMessage;
-            break;
-    }}
+            case "rock":
+                outcome.textContent = winMessage;
+                playerScore += 1;
+                break;
+            case "paper":
+                outcome.textContent = equaMessage;
+                break;
+            case "scissors":
+                outcome.textContent = loseMessage;
+                computerScore += 1;
+                break;
+            default:
+                outcome.textContent = defaultMessage;
+                break;
+        }
+    }
     else if (playerSelection == "scissors") {
         switch (computerSelection) {
-        case "rock":
-            outcome.textContent = loseMessage;
-            computerScore += 1;
-            if (computerScore == 5) {
-                disableButtons();
-                showWinner();
-            }
-            break;
-        case "paper":
-            outcome.textContent = winMessage;
-            playerScore += 1;
-            if (playerScore == 5) {
-                disableButtons();
-                showWinner();
-            }
-            break;
-        case "scissors":
-            outcome.textContent = equaMessage;
-            break;
-        default:
-            outcome.textContent = defaultMessage;
-            break;
-    }}
+            case "rock":
+                outcome.textContent = loseMessage;
+                computerScore += 1;
+                break;
+            case "paper":
+                outcome.textContent = winMessage;
+                playerScore += 1;
+                break;
+            case "scissors":
+                outcome.textContent = equaMessage;
+                break;
+            default:
+                outcome.textContent = defaultMessage;
+                break;
+        }
+    }
+    
     intermediaryScore.textContent = "This was round " + round + ". You: " + playerScore + ". Your opponent: " + computerScore + ".";
+    if (computerScore == 5 || playerScore == 5) {
+        disableButtons();
+        showWinner();
+    }
 }
 
 let finalScore = document.createElement("p");
@@ -139,15 +135,4 @@ function showWinner() {
     else {
         finalScore.textContent = "You lost this game!";
     }
-}
-
-const buttons = document.querySelectorAll(".gameOptions");
-buttons.forEach((button) => {
-    button.addEventListener("click", () => playRound(button.value));
-});
-
-function disableButtons() {
-    buttons.forEach(button => {
-        button.disabled = true;
-    });
 }

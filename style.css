@@ -33,9 +33,12 @@ ul {
 }
 
 .narrationDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     width: 47.5vw;
     height: 15vh;
-    padding: 1em;
+    padding: 2em 1em;
     background: beige;
     border-color: grey;
     border-style: solid;

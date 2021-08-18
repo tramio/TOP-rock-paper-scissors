@@ -3,16 +3,17 @@ let playerScore = 0;
 let computerScore = 0;
 let round = 0;
 
-const divResults = document.querySelector("#results");
+const narrationDiv = document.querySelector("#results");
+const scoreDiv = document.querySelector("#scoreDiv");
 
 let choices = document.createElement("p");
-divResults.appendChild(choices);
+narrationDiv.appendChild(choices);
 
 let outcome = document.createElement("p");
-divResults.appendChild(outcome);
+narrationDiv.appendChild(outcome);
 
 let intermediaryScore = document.createElement("p");
-divResults.appendChild(intermediaryScore);
+scoreDiv.appendChild(intermediaryScore);
 
 function playRound(playerSelection) {
     round++;
@@ -109,7 +110,7 @@ function playRound(playerSelection) {
 }
 
 let finalScore = document.createElement("p");
-divResults.appendChild(finalScore);
+narrationDiv.appendChild(finalScore);
 
 function showWinner() {
     if (playerScore == computerScore) {

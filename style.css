@@ -6,8 +6,18 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: 'Space Mono', monospace;
+    text-align: center;
     color: gray;
     background: rgb(242, 234, 248);
+}
+
+h1 {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+ul {
+    list-style: square inside;
 }
 
 .gameDiv {
@@ -23,12 +33,19 @@ body {
 }
 
 .narrationDiv {
-    width: auto;
+    width: 47.5vw;
     height: 15vh;
     padding: 1em;
-    background: rgb(250, 246, 244);
+    background: beige;
     border-color: grey;
     border-style: solid;
     border-width: 2px;
     border-radius: 3px;
+}
+
+.buttons {
+    background: beige;
+    color: inherit;
+    font-family: inherit;
+    border: none;
 }

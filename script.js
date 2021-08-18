@@ -56,15 +56,14 @@ function playRound(playerSelection) {
     let winMessage = "You won; " + playerSelection + " beats " + computerSelection + "!";
     let loseMessage = "You lost; " + computerSelection + " beats " + playerSelection + "!";
     let equaMessage = "It's a tie! Keep going!";
-    let defaultMessage = "Your opponent broke! Someone must fix this game!";
 
     choices.textContent = "You went for " + playerSelection + ". Wise choice. Your opponent chose " + computerSelection + "! What a surprise!!!";
 
-    if (playerSelection == "rock") {
+    if (playerSelection == computerSelection) {
+        outcome.textContent = equaMessage;
+    }
+    else if (playerSelection == "rock") {
         switch (computerSelection) {
-            case "rock":
-                outcome.textContent = equaMessage;
-                break;
             case "paper":
                 outcome.textContent = loseMessage;
                 computerScore++;
@@ -74,7 +73,6 @@ function playRound(playerSelection) {
                 playerScore++;
                 break;
             default:
-                outcome.textContent = defaultMessage;
                 break;
         }
     }
@@ -84,15 +82,11 @@ function playRound(playerSelection) {
                 outcome.textContent = winMessage;
                 playerScore++;
                 break;
-            case "paper":
-                outcome.textContent = equaMessage;
-                break;
             case "scissors":
                 outcome.textContent = loseMessage;
                 computerScore++;
                 break;
             default:
-                outcome.textContent = defaultMessage;
                 break;
         }
     }
@@ -106,11 +100,7 @@ function playRound(playerSelection) {
                 outcome.textContent = winMessage;
                 playerScore++;
                 break;
-            case "scissors":
-                outcome.textContent = equaMessage;
-                break;
             default:
-                outcome.textContent = defaultMessage;
                 break;
         }
     }

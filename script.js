@@ -23,12 +23,11 @@ startBtn.addEventListener("click", () => {
 });
 
 function createButtons() {
-    let myOptions = ["rock", "paper", "scissors"]
     for (i = 0; i < 3; i++) {
         const newBtn = document.createElement("button");
         newBtn.classList.add("gameOptions", "buttons");
-        newBtn.value = myOptions[i];
-        newBtn.textContent = myOptions[i];
+        newBtn.value = gameOptions[i];
+        newBtn.textContent = gameOptions[i];
         narrationDiv.appendChild(newBtn);
     }
 }

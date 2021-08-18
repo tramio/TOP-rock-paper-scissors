@@ -2,15 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Sheets -->
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <title>Rock, Paper, Scissors!</title>
 </head>
 <body>
-    <button value="rock" class="gameOptions">rock</button>
-    <button value="paper" class="gameOptions">paper</button>
-    <button value="scissors" class="gameOptions">scissors</button>
-    <div id="results"></div>
+    <div class="gameDiv">
+        <div class="buttons">
+            <button value="rock" class="gameOptions">rock</button>
+            <button value="paper" class="gameOptions">paper</button>
+            <button value="scissors" class="gameOptions">scissors</button>
+        </div>
+        <div class="narrationDiv" id="results">
+            <p>Here's the initial content.</p>
+        </div>
+    </div>
 </body>
 </html>

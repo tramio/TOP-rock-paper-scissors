@@ -67,11 +67,11 @@ function playRound(playerSelection) {
                 break;
             case "paper":
                 outcome.textContent = loseMessage;
-                computerScore += 1;
+                computerScore++;
                 break;
             case "scissors":
                 outcome.textContent = winMessage;
-                playerScore += 1;
+                playerScore++;
                 break;
             default:
                 outcome.textContent = defaultMessage;
@@ -82,14 +82,14 @@ function playRound(playerSelection) {
         switch (computerSelection) {
             case "rock":
                 outcome.textContent = winMessage;
-                playerScore += 1;
+                playerScore++;
                 break;
             case "paper":
                 outcome.textContent = equaMessage;
                 break;
             case "scissors":
                 outcome.textContent = loseMessage;
-                computerScore += 1;
+                computerScore++;
                 break;
             default:
                 outcome.textContent = defaultMessage;
@@ -100,11 +100,11 @@ function playRound(playerSelection) {
         switch (computerSelection) {
             case "rock":
                 outcome.textContent = loseMessage;
-                computerScore += 1;
+                computerScore++;
                 break;
             case "paper":
                 outcome.textContent = winMessage;
-                playerScore += 1;
+                playerScore++;
                 break;
             case "scissors":
                 outcome.textContent = equaMessage;

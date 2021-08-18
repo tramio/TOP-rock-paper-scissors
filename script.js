@@ -6,9 +6,6 @@ let round = 0;
 const narrationDiv = document.querySelector("#results");
 const scoreDiv = document.querySelector("#scoreDiv");
 
-let choices = document.createElement("p");
-narrationDiv.appendChild(choices);
-
 let outcome = document.createElement("p");
 narrationDiv.appendChild(outcome);
 
@@ -53,58 +50,25 @@ function playRound(playerSelection) {
 
     computerPlay();
 
-    let winMessage = "You won; " + playerSelection + " beats " + computerSelection + "!";
-    let loseMessage = "You lost; " + computerSelection + " beats " + playerSelection + "!";
-    let equaMessage = "It's a tie! Keep going!";
-
-    choices.textContent = "You went for " + playerSelection + ". Wise choice. Your opponent chose " + computerSelection + "! What a surprise!!!";
+    let winMessage = `You chose ${playerSelection}... and defeated your opponent's mighty ${computerSelection}!`;
+    let loseMessage = `Oh no, you were struck by your opponent's ${computerSelection} as you were reaching for ${playerSelection}!`;
+    let equaMessage = `It's a tie! Keep going!`;
 
     if (playerSelection == computerSelection) {
         outcome.textContent = equaMessage;
     }
-    else if (playerSelection == "rock") {
-        switch (computerSelection) {
-            case "paper":
-                outcome.textContent = loseMessage;
-                computerScore++;
-                break;
-            case "scissors":
-                outcome.textContent = winMessage;
-                playerScore++;
-                break;
-            default:
-                break;
-        }
+    else if (
+        (playerSelection == "rock" && computerSelection == "scissors")
+        || (playerSelection == "scissors" && computerSelection == "paper")
+        || (playerSelection == "paper" && computerSelection == "rock")
+    ) {
+        outcome.textContent = winMessage;
+        playerScore++;
+    } else {
+        outcome.textContent = loseMessage;
+        computerScore++;
     }
-    else if (playerSelection == "paper") {
-        switch (computerSelection) {
-            case "rock":
-                outcome.textContent = winMessage;
-                playerScore++;
-                break;
-            case "scissors":
-                outcome.textContent = loseMessage;
-                computerScore++;
-                break;
-            default:
-                break;
-        }
-    }
-    else if (playerSelection == "scissors") {
-        switch (computerSelection) {
-            case "rock":
-                outcome.textContent = loseMessage;
-                computerScore++;
-                break;
-            case "paper":
-                outcome.textContent = winMessage;
-                playerScore++;
-                break;
-            default:
-                break;
-        }
-    }
-    
+
     intermediaryScore.textContent = "This was round " + round + ". You: " + playerScore + ". Your opponent: " + computerScore + ".";
     if (computerScore == 5 || playerScore == 5) {
         disableButtons();

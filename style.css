@@ -1,6 +1,6 @@
 body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
@@ -48,4 +48,8 @@ ul {
     color: inherit;
     font-family: inherit;
     border: none;
+}
+
+.buttons:hover {
+    background-color: brown;
 }

@@ -15,6 +15,24 @@ narrationDiv.appendChild(outcome);
 let intermediaryScore = document.createElement("p");
 scoreDiv.appendChild(intermediaryScore);
 
+const startBtn = document.querySelector("#startGame");
+startBtn.addEventListener("click", () => {
+    let greetingDiv = document.querySelector(".greetingDiv");
+    narrationDiv.removeChild(greetingDiv);
+    createButtons();
+});
+
+function createButtons() {
+    let myOptions = ["rock", "paper", "scissors"]
+    for (i = 0; i < 3; i++) {
+        const newBtn = document.createElement("button");
+        newBtn.classList.add("gameOptions", "buttons");
+        newBtn.value = myOptions[i];
+        newBtn.textContent = myOptions[i];
+        narrationDiv.appendChild(newBtn);
+    }
+}
+
 function playRound(playerSelection) {
     round++;
     let computerSelection;
